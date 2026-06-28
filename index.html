@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inom? Tara?</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#141E30,#243B55);
+    overflow:hidden;
+}
+
+.card{
+    width:420px;
+    background:rgba(255,255,255,.1);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+    color:#fff;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+    animation:fadeIn .8s;
+}
+
+h1{
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    opacity:.8;
+    margin-bottom:30px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    border-radius:50px;
+    padding:14px 35px;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+}
+
+#taraBtn{
+    background:#00C853;
+    color:white;
+}
+
+#taraBtn:hover{
+    transform:scale(1.08);
+}
+
+#passBtn{
+    background:#F44336;
+    color:white;
+}
+
+#passBtn:hover{
+    transform:scale(1.08);
+}
+
+.form{
+    display:none;
+    animation:slide .5s;
+}
+
+.form input,
+.form select{
+    width:100%;
+    margin-top:15px;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+    font-size:15px;
+}
+
+.submit{
+    width:100%;
+    margin-top:20px;
+    background:#00BCD4;
+    color:white;
+}
+
+.submit:hover{
+    background:#0097A7;
+}
+
+#message{
+    display:none;
+    margin-top:25px;
+    font-size:22px;
+    font-weight:bold;
+    color:#FFD54F;
+    animation:fadeIn .5s;
+}
+
+@keyframes slide{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+    <h1>🍻 Inom?</h1>
+
+    <p class="subtitle">Tara?</p>
+
+    <div class="buttons">
+
+        <button id="taraBtn">TARA ❤️</button>
+
+        <button id="passBtn">PASS 😅</button>
+
+    </div>
+
+    <div class="form" id="form">
+
+        <input type="text" id="name" placeholder="Your Name" required>
+
+        <input type="date" id="date">
+
+        <select id="time">
+            <option value="">Select Time</option>
+            <option>6:00 PM - 8:00 PM</option>
+            <option>8:00 PM - 10:00 PM</option>
+            <option>10:00 PM - 12:00 AM</option>
+            <option>1:00 AM - 5:00 AM</option>
+        </select>
+
+        <select id="location">
+            <option value="">Select Location</option>
+            <option>Plain Sight</option>
+            <option>KOR BAR</option>
+            <option>Conclair</option>
+            <option>Fuze</option>
+            <option>BH</option>
+        </select>
+
+        <button class="submit" onclick="submitForm()">Submit</button>
+
+    </div>
+
+    <div id="message"></div>
+
+</div>
+
+<script>
+
+const taraBtn = document.getElementById("taraBtn");
+const passBtn = document.getElementById("passBtn");
+const buttons = document.querySelector(".buttons");
+const form = document.getElementById("form");
+const message = document.getElementById("message");
+
+// TARA BUTTON
+taraBtn.onclick = function(){
+
+    // Hide buttons
+    buttons.style.display = "none";
+
+    // Show form
+    form.style.display = "block";
+
+};
+
+// PASS BUTTON
+passBtn.onclick = function(){
+
+    // Hide buttons
+    buttons.style.display = "none";
+
+    // Hide form
+    form.style.display = "none";
+
+    // Show message
+    message.style.display = "block";
+    message.innerHTML = "😅 Maybe next time!";
+
+};
+
+// SUBMIT FORM
+function submitForm(){
+
+    let name = document.getElementById("name").value;
+    let date = document.getElementById("date").value;
+    let time = document.getElementById("time").value;
+    let location = document.getElementById("location").value;
+
+    if(name=="" || date=="" || time=="" || location==""){
+        alert("Please complete the form.");
+        return;
+    }
+
+    form.style.display="none";
+
+    message.style.display="block";
+
+    message.innerHTML =
+    "🥳 See you, <b>"+name+"</b>!<br><br>" +
+    "📅 "+date+"<br>" +
+    "🕒 "+time+"<br>" +
+    "📍 "+location+"<br><br>" +
+    "🍻 See you there!";
+
+}
+
+</script>
+
+</body>
+</html>
