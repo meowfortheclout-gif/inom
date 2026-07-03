@@ -170,11 +170,7 @@ button{
 
         <select id="location">
             <option value="">Select Location</option>
-            <option>Plain Sight</option>
-            <option>KOR BAR</option>
-            <option>Conclair</option>
-            <option>Fuze</option>
-            <option>BH</option>
+            <option>HOUSE NYO</option>
         </select>
 
         <button class="submit" onclick="submitForm()">Submit</button>
@@ -192,6 +188,7 @@ const passBtn = document.getElementById("passBtn");
 const buttons = document.querySelector(".buttons");
 const form = document.getElementById("form");
 const message = document.getElementById("message");
+let passClicks = 0;
 
 // TARA BUTTON
 taraBtn.onclick = function(){
@@ -206,16 +203,18 @@ taraBtn.onclick = function(){
 
 // PASS BUTTON
 passBtn.onclick = function(){
+    passClicks += 1;
 
-    // Hide buttons
-    buttons.style.display = "none";
+    if (passClicks >= 2) {
+        passBtn.style.display = "none";
+    }
 
-    // Hide form
+    // Keep the buttons visible until the user clicks PASS twice
     form.style.display = "none";
 
-    // Show message
-    message.style.display = "block";
-    message.innerHTML = "😅 Maybe next time!";
+    // Hide message on PASS
+    message.style.display = "none";
+    message.innerHTML = "";
 
 };
 
